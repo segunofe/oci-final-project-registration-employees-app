@@ -1,0 +1,13 @@
+{% extends 'layouts/master.html' %}
+{% block title %}Edit Employee{% endblock %}
+{% block body %}
+<h1>Edit Employee</h1>
+<form method="post">
+	{{ generate_fields(form) }}
+	<input type="submit" class="btn btn-success" value="Save">
+</form>
+{% endblock %}
+<footer class="container">
+	<br>
+	<p>&copy; 2021 The Cloud Bootcamp. All Rights Reserved (Fictitious site - created for educational purposes only - reproduction prohibited)</p>
+</footer>
