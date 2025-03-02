@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  app:
+    image: "svofe/oci-final-project-registration-employees-app"
+    environment:
+        - DB_CONNECT_STRING=dbhr_high
+        - DB_USER=app_hr
+        - DB_PASSWORD=Welcome123456
