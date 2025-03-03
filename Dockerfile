@@ -40,11 +40,17 @@ COPY ./templates /app/templates
 
 # Install Python dependencies and upgrade pip
 RUN pip3 install --upgrade pip
-RUN pip3 install gunicorn
-RUN pip3 install -r /app/requirements.txt
+RUN /usr/bin/pip3 install --upgrade pip && \
+    /usr/bin/pip3 install gunicorn && \
+    /usr/bin/pip3 install -r /app/requirements.txt && \
+    /usr/bin/pip3 install cx_Oracle
+
+
+# Ensure the installed packages are available in PATH
+ENV PATH="/opt/rh/rh-python36/root/usr/bin:$PATH"
 
 # Expose app port
 EXPOSE 8080
 
 # Start application
-CMD ["gunicorn", "app:app", "--config=config.py", "--bind", "0.0.0.0:8080"]
+CMD ["/opt/rh/rh-python36/root/usr/bin/gunicorn", "app:app", "--config=config.py", "--bind", "0.0.0.0:8080"]
