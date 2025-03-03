@@ -4,6 +4,13 @@ services:
     image: "svofe/oci-final-project-registration-employees-app"
     ports:
       - 8080:8080
+# added the platform block to avoid platform locking
+    platforms:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm/v7
+        - linux/ppc64le
+        - linux/s390x
     environment:
         - DB_CONNECT_STRING=dbhr_high
         - DB_USER=app_hr
